@@ -1,0 +1,24 @@
+import { useQuery } from "@tanstack/react-query";
+
+import useAxios from "../../hooks/useAxios";
+import borrowKeys from "./cacheKeys";
+
+const useGetBorrows = (params = {}) => {
+  const axiosClient = useAxios();
+
+  const filteredParams = Object.fromEntries(Object.entries(params).filter(([, value]) => value));
+
+  const queryParams = new URLSearchParams(filteredParams);
+
+  const cacheKey = Object.keys(filteredParams).length === 0 ? borrowKeys.lists : borrowKeys.list(filteredParams);
+
+  const query = useQuery({
+    queryKey: cacheKey,
+    staleTime: Infinity,
+    queryFn: () => axiosClient._get(`/v1/borrows?${queryParams.toString()}`),
+  });
+
+  return { ...query, data: query.data?.data.payload };
+};
+
+export default useGetBorrows;
