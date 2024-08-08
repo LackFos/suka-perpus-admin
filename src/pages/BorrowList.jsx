@@ -12,7 +12,7 @@ const BorrowList = () => {
   const [filters, setFilters] = useState({
     user_id: searchParams.get("user_id"),
     status_id: searchParams.get("status_id"),
-    startDate: searchParams.get("startDate") ? dayjs(searchParams.get("startDate")) : dayjs(new Date()),
+    startDate: searchParams.get("startDate") ? dayjs(searchParams.get("startDate")) : undefined,
   });
 
   const borrows = useGetBorrows({
