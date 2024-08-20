@@ -46,7 +46,7 @@ const BookCreate = () => {
   return (
     <form onSubmit={handleCreateBook} className='flex flex-col rounded-lg mx-6 my-4 bg-white p-6'>
       <div className='mb-6'>
-        <Title level={3}>Detail Buku</Title>
+        <Title level={3}>Tambah Buku</Title>
       </div>
 
       <div className='flex flex-col gap-1 mb-6'>

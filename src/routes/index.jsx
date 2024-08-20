@@ -11,6 +11,7 @@ import BookDetail from "../pages/BookDetail";
 import BookCreate from "../pages/BookCreate";
 import Cart from "../pages/Cart";
 import BorrowList from "../pages/BorrowList";
+import { Helmet } from "react-helmet";
 
 export default [
   {
@@ -23,7 +24,14 @@ export default [
     children: [
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <>
+            <Helmet>
+              <title>Login | Suka Perpus</title>
+            </Helmet>
+            <Login />
+          </>
+        ),
       },
       {
         element: <ProtectedRoute />,
@@ -33,27 +41,69 @@ export default [
             children: [
               {
                 path: "/",
-                element: <Dashboard />,
+                element: (
+                  <>
+                    <Helmet>
+                      <title>Dashboard | SukaPerpus</title>
+                    </Helmet>
+                    <Dashboard />,
+                  </>
+                ),
               },
               {
                 path: "/buku",
-                element: <BookList />,
+                element: (
+                  <>
+                    <Helmet>
+                      <title>Daftar Buku | SukaPerpus</title>
+                    </Helmet>
+                    <BookList />,
+                  </>
+                ),
               },
               {
                 path: "/buku/:isbn",
-                element: <BookDetail />,
+                element: (
+                  <>
+                    <Helmet>
+                      <title>Detail Buku | SukaPerpus</title>
+                    </Helmet>
+                    <BookDetail />
+                  </>
+                ),
               },
               {
                 path: "/tambah-buku",
-                element: <BookCreate />,
+                element: (
+                  <>
+                    <Helmet>
+                      <title>Tambah Buku | SukaPerpus</title>
+                    </Helmet>
+                    <BookCreate />,
+                  </>
+                ),
               },
               {
                 path: "/pinjam",
-                element: <BorrowList />,
+                element: (
+                  <>
+                    <Helmet>
+                      <title>Daftar Peminjaman | SukaPerpus</title>
+                    </Helmet>
+                    <BorrowList />,
+                  </>
+                ),
               },
               {
                 path: "/keranjang",
-                element: <Cart />,
+                element: (
+                  <>
+                    <Helmet>
+                      <title>List Peminjaman | SukaPerpus</title>
+                    </Helmet>
+                    <Cart />,
+                  </>
+                ),
               },
             ],
           },
