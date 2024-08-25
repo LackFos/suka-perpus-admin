@@ -46,7 +46,7 @@ export default [
                     <Helmet>
                       <title>Dashboard | SukaPerpus</title>
                     </Helmet>
-                    <Dashboard />,
+                    <Dashboard />
                   </>
                 ),
               },
@@ -57,7 +57,7 @@ export default [
                     <Helmet>
                       <title>Daftar Buku | SukaPerpus</title>
                     </Helmet>
-                    <BookList />,
+                    <BookList />
                   </>
                 ),
               },
@@ -79,7 +79,7 @@ export default [
                     <Helmet>
                       <title>Tambah Buku | SukaPerpus</title>
                     </Helmet>
-                    <BookCreate />,
+                    <BookCreate />
                   </>
                 ),
               },
@@ -90,7 +90,7 @@ export default [
                     <Helmet>
                       <title>Daftar Peminjaman | SukaPerpus</title>
                     </Helmet>
-                    <BorrowList />,
+                    <BorrowList />
                   </>
                 ),
               },
@@ -101,7 +101,7 @@ export default [
                     <Helmet>
                       <title>List Peminjaman | SukaPerpus</title>
                     </Helmet>
-                    <Cart />,
+                    <Cart />
                   </>
                 ),
               },

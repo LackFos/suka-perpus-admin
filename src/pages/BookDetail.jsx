@@ -70,7 +70,7 @@ const BookDetail = () => {
           <div className='flex flex-col gap-1 mb-6'>
             <Image width={200} height={290} className='rounded-lg' src={`${import.meta.env.VITE_API_ENDPOINT}${book.data.image}`} />
 
-            <Upload name='image'>
+            <Upload maxCount={1} name='image' onChange={(value) => handleFormDataChange("image", value.file.originFileObj)}>
               <Button icon={<UploadOutlined />}>Upload Gambar</Button>
             </Upload>
 

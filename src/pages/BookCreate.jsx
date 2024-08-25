@@ -42,6 +42,7 @@ const BookCreate = () => {
       navigate(`/buku/${createBookMutation.data.payload.isbn}`);
     }
   }, [createBookMutation.isSuccess, navigate, createBookMutation.data]);
+  console.log(formData);
 
   return (
     <form onSubmit={handleCreateBook} className='flex flex-col rounded-lg mx-6 my-4 bg-white p-6'>
@@ -56,7 +57,7 @@ const BookCreate = () => {
           </div>
         </div>
 
-        <Upload name='image'>
+        <Upload maxCount={1} onChange={(value) => handleFormDataChange("image", value.file.originFileObj)} name='image'>
           <Button icon={<UploadOutlined />}>Upload Gambar</Button>
         </Upload>
         {errors?.image && <p className='text-red-600'>{errors.image}</p>}
