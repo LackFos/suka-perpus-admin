@@ -1,12 +1,4 @@
-import {
-  BookOutlined,
-  CalendarOutlined,
-  IdcardFilled,
-  SearchOutlined,
-  SwapOutlined,
-  TransactionOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { BookOutlined, CalendarOutlined, SwapOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Card, DatePicker, Input, Select } from "antd";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
@@ -115,7 +107,7 @@ const BorrowList = () => {
                       <h4>{borrow.user.name}</h4>
                     </li>
                     <li className='flex gap-2 text-xs font-medium'>
-                      <SwapOutlined /> Id Peminjaman : {borrow.user.id}
+                      <SwapOutlined /> Id Peminjaman : {borrow.id}
                     </li>
                     <li className='flex gap-2 text-xs font-medium'>
                       <UserOutlined /> Id User : {borrow.user.id}
