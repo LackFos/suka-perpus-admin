@@ -1,5 +1,5 @@
 import { BookOutlined, DashboardOutlined, SwapOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const { Header, Sider } = Layout;
@@ -44,6 +44,11 @@ const AppLayout = () => {
     },
   ];
 
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
     <Layout className='min-w-screen min-h-screen'>
       <Sider breakpoint='lg' collapsedWidth='0'>
@@ -51,7 +56,13 @@ const AppLayout = () => {
         <Menu theme='dark' mode='inline' defaultSelectedKeys={["4"]} items={items} />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Header style={{ padding: 0, background: colorBgContainer }}>
+          <div className='flex w-full h-full justify-end items-center px-6'>
+            <Button type='primary' className='bg-red-600' size='lg' onClick={handleLogout}>
+              Logout
+            </Button>
+          </div>
+        </Header>
         <Outlet />
       </Layout>
     </Layout>
