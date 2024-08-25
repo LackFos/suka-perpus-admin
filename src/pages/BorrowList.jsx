@@ -1,4 +1,12 @@
-import { BookOutlined, CalendarOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  BookOutlined,
+  CalendarOutlined,
+  IdcardFilled,
+  SearchOutlined,
+  SwapOutlined,
+  TransactionOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Button, Card, DatePicker, Input, Select } from "antd";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
@@ -10,12 +18,14 @@ const BorrowList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filters, setFilters] = useState({
+    borrow_id: searchParams.get("borrow_id"),
     user_id: searchParams.get("user_id"),
     status_id: searchParams.get("status_id"),
     startDate: searchParams.get("startDate") ? dayjs(searchParams.get("startDate")) : undefined,
   });
 
   const borrows = useGetBorrows({
+    borrow_id: searchParams.get("borrow_id"),
     user_id: searchParams.get("user_id"),
     status_id: searchParams.get("status_id"),
     startDate: searchParams.get("startDate"),
@@ -26,6 +36,7 @@ const BorrowList = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const updatedSearchParams = {};
+    if (filters.borrow_id) updatedSearchParams.borrow_id = filters.borrow_id;
     if (filters.user_id) updatedSearchParams.user_id = filters.user_id;
     if (filters.status_id) updatedSearchParams.status_id = filters.status_id;
     if (filters.startDate) updatedSearchParams.startDate = filters.startDate.format("YYYY-MM-DD");
@@ -56,11 +67,19 @@ const BorrowList = () => {
     <div className='ml-6 mx-4 flex flex-col gap-6 mt-6 '>
       <form onSubmit={handleSubmit} className='flex gap-2'>
         <Input
+          onChange={(e) => handleFilterChange("borrow_id", e.target.value)}
+          value={filters.borrow_id}
+          className='w-full'
+          prefix={<SwapOutlined />}
+          placeholder='Cari id peminjaman'
+          allowClear
+        />
+        <Input
           onChange={(e) => handleFilterChange("user_id", e.target.value)}
           value={filters.user_id}
           className='w-full'
-          prefix={<SearchOutlined />}
-          placeholder='Cari User ID'
+          prefix={<UserOutlined />}
+          placeholder='Cari id user'
           allowClear
         />
         <Select
@@ -96,7 +115,10 @@ const BorrowList = () => {
                       <h4>{borrow.user.name}</h4>
                     </li>
                     <li className='flex gap-2 text-xs font-medium'>
-                      <UserOutlined /> User ID : {borrow.user.id}
+                      <SwapOutlined /> Id Peminjaman : {borrow.user.id}
+                    </li>
+                    <li className='flex gap-2 text-xs font-medium'>
+                      <UserOutlined /> Id User : {borrow.user.id}
                     </li>
                     <li className='flex gap-2 text-xs font-medium'>
                       <CalendarOutlined />
